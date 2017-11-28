@@ -1,25 +1,30 @@
 //https://leetcode.com/problems/longest-substring-without-repeating-characters/description/
-int lengthOfLongestSubstring(string s) {
-	int flag = 0, max = 0, sublen = 0,k = 0,i = 0;//flag record the beginning position of loop
-	int *len = new int[s.length()];//store the length of each substring
-	string sub;
-	while (i < s.length()){
-		if (sub.find(s.at(i),0)<=s.length()) {// there exist a element of s in sub 
-			len[k++] = sublen;
-			i = ++flag;//the next search begins at flag
-			sublen = 0;//reset sublen,find the same element in sub,stop search
-			sub.clear();//clear substring
-		}
-		else {//there doesn't exist a element of s in sub 
-			sublen++;
-			sub.push_back(s.at(i));//not find the same element in sub ,add it
-			i++;
-			if(i == s.length()) len[k++] = sublen;
-		}
-	} 
-	for (int n = 0; n < s.length();n++) {
-		if (len[n]>max) max = len[n];
-	}
-	delete[] len;
-	return max;
-}
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        
+        int max = 0;                        //length of the longest substring
+        int len = 0;                        //length of substring
+        string sub;                         //substring
+        int k = 0;                          //where to start traversing
+        for(int i = 0;i<s.size();i++){
+            if(sub.find(s[i])<s.size()){    //exist repeating character
+                if(max<len)max = len; 
+                sub.clear();
+                k++;
+                i = k;
+                sub.push_back(s[i]);
+                len = 1;
+
+                
+            } else{                          //no repeating character
+               len++;
+               sub.push_back(s[i]);
+               
+            }
+            
+        }//end for i
+        if(max<len) max = len; 
+        return max;
+    }
+};
