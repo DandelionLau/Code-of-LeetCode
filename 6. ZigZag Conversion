@@ -2,7 +2,7 @@ class Solution {
 public:
 string convert(string s, int numRows) {
     if (numRows == 1)
-		return s;
+    	return s;
 	//calcuate the size of matrix for Z-code numRows*{ceil[L/(2(numRows-1)]x(numRows-1)}
 	string z;
 	int i, j, k, flag;
