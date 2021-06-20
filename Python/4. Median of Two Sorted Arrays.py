@@ -1,4 +1,5 @@
-# https://leetcode.com/problems/median-of-two-sorted-arrays/description/
+import math
+
 class Solution:
     def findMedianSortedArrays(self, nums1, nums2):
         """
