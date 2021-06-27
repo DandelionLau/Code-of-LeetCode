@@ -1,9 +1,9 @@
 """
-@FileName: utils.py
-@Description: Implement utils
+@FileName: tree.py
+@Description: Implement tree
 @Author: Ryuk
-@CreateDate: 2021/06/20
-@LastEditTime: 2021/06/20
+@CreateDate: 2021/06/27
+@LastEditTime: 2021/06/27
 @LastEditors: Please set LastEditors
 @Version: v0.1
 """
@@ -16,14 +16,14 @@ class TreeNode:
         self.left = left
         self.right = right
 
-def generate_tree(data: List[int], index:int)->TreeNode:
+def create_tree(data: List[int], index:int)->TreeNode:
     if index < len(data):
-        if data[index] == None:
+        if data[index] is None:
             return None
         else:
             root = TreeNode(data[index])
-            root.left = generate_tree(data, 2*index+1)
-            root.right = generate_tree(data, 2*index+2)
+            root.left = create_tree(data, 2*index+1)
+            root.right = create_tree(data, 2*index+2)
         return root
     else:
         return None
